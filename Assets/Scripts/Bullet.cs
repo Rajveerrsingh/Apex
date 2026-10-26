@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float lifetime = 2f;
     [SerializeField] private int damage = 1;
 
+    public int Damage => damage;
+
     private void Start()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -19,10 +21,20 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (other.TryGetComponent(out Enemy enemy))
+        else if (!CompareTag("EnemyBullet") && other.TryGetComponent(out Enemy enemy))
         {
             enemy.TakeDamage(damage);
             Destroy(gameObject);
+        }
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = transform.right * speed;
         }
     }
 }
