@@ -171,7 +171,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1bec8c689743f418a77b6ecf329803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  type: 1
   health: 3
+  points: 100
+  patrolSpeed: 2
+  patrolDistance: 3
+  chargeSpeed: 3
+  bulletPrefab: {fileID: 0}
+  fireInterval: 2
+  bulletSpeed: 5
+  bulletCount: 1
+  spreadAngle: 0
+  aimAtHero: 1
+  spinPerShot: 0
 --- !u!114 &6925457223660137449
 MonoBehaviour:
   m_ObjectHideFlags: 0
