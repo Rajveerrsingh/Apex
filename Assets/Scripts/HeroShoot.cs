@@ -19,7 +19,6 @@ public class HeroShoot : MonoBehaviour
         if (Mouse.current.leftButton.isPressed && Time.time >= nextFireTime)
         {
             Shoot();
-            Shoot();
             nextFireTime = Time.time + fireCooldown;
         }
     }
