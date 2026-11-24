@@ -11,6 +11,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int health = 3;
     [SerializeField] private int points = 100;
 
+    [Header("Energy drop")]
+    [SerializeField] private GameObject energyPickupPrefab;
+    [SerializeField, Range(0f, 1f)] private float dropChance = 0.5f;
+
     [Header("Drone: patrol")]
     [SerializeField] private float patrolSpeed = 2f;
     [SerializeField] private float patrolDistance = 3f;
@@ -153,6 +157,13 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         ScoreManager.Add(points);
+
+        // Sometimes leave an energy pickup where the enemy died.
+        if (energyPickupPrefab != null && Random.value <= dropChance)
+        {
+            Instantiate(energyPickupPrefab, transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject);
     }
 }
